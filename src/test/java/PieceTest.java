@@ -37,6 +37,7 @@ class PieceTest {
             fail(e.getMessage());
         }
     }
+    /*
     @Test
     public void test_Minion() {
         System.out.println("Testing Minion Piece");
