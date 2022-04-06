@@ -1,4 +1,4 @@
-public class PieceBuzz {
+public class PieceBuzz extends Piece {
     private char symbol;
     private String teamColor;
     private int numAttacks;

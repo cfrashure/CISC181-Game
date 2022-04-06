@@ -1,4 +1,4 @@
-public class PieceBlueHen {
+public class PieceBlueHen extends Piece {
     private char symbol;
     private String teamColor;
     private int numAttacks;

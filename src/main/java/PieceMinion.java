@@ -1,5 +1,4 @@
-public class PieceMinion {
-    public class PieceMinion {
+public class PieceMinion extends Piece {
         private char symbol;
         private String teamColor;
         private int numRecruits;
