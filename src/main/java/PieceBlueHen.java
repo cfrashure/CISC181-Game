@@ -1,10 +1,6 @@
-public class PieceBlueHen {
-    private char symbol;
-    private String teamColor;
+public class PieceBlueHen extends Piece{
     private int numAttacks;
     private int numRecruits;
-    private boolean hidden ;
-    private boolean original;
     private boolean flies;
 
     final public int MAX_NUM_ATTACKS = 3;
@@ -13,12 +9,9 @@ public class PieceBlueHen {
                          String teamColor,
                          int numAttacks, int numRecruits,
                          boolean hidden, boolean original){
-        this.symbol = symbol;
-        this.teamColor = teamColor;
+        super(symbol, teamColor, hidden, original);
         this.numAttacks = numAttacks;
         this.numRecruits = numRecruits;
-        this.hidden = hidden;
-        this.original = original;
         updateFly();
     }
 
@@ -28,24 +21,14 @@ public class PieceBlueHen {
                 false,true);
     }
 
-    public char getSymbol() {
-        return symbol;
-    }
-    public String getTeamColor() {
-        return teamColor;
-    }
+
     public int getNumAttacks()    {
         return this.numAttacks;
     }
     public int getNumRecruits(){
         return this.numRecruits;
     }
-    public boolean isHidden() {
-        return hidden;
-    }
-    public boolean isOriginal() {
-        return original;
-    }
+
     public boolean canFly()    {
         return this.flies;
     }
@@ -63,12 +46,6 @@ public class PieceBlueHen {
     }
     public void setNumRecruits(int numRecruits)    {
         this.numRecruits = numRecruits;
-    }
-    public void setHidden(boolean hidden) {
-        this.hidden = hidden;
-    }
-    public void setOriginal(boolean original) {
-        this.original = original;
     }
 
     private void updateFly()    {
@@ -90,7 +67,7 @@ public class PieceBlueHen {
         return true;
     }
 
-    public PieceBlueHen spawn()    {
+    public PieceBlueHen spawn() {
         PieceBlueHen copyHen =
                 new PieceBlueHen(Character.toLowerCase(this.symbol),
                         this.teamColor,this.numAttacks,this.numRecruits,
