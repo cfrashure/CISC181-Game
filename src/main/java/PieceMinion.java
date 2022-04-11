@@ -2,7 +2,7 @@ public class PieceMinion {
     private char symbol;
     private String teamColor;
     private int numRecruits;
-    private int numTimesSpawned;
+    protected int numTimesSpawned;
     private boolean hidden;
     private boolean original;
 
