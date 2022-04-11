@@ -37,7 +37,6 @@ class PieceTest {
             fail(e.getMessage());
         }
     }
-    /*
     @Test
     public void test_Minion() {
         System.out.println("Testing Minion Piece");
@@ -69,7 +68,7 @@ class PieceTest {
             fail(e.getMessage());
         }
     }
-
+/*
     @Test
     public void test_Buzz() {
         System.out.println("Testing Buzz Lightyear Class");

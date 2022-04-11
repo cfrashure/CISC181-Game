@@ -1,3 +1,5 @@
+import static java.lang.Character.toLowerCase;
+
 public class PieceEvilMinion extends PieceMinion{
     private int numAttacks;
     private boolean hungry;
@@ -39,7 +41,16 @@ public class PieceEvilMinion extends PieceMinion{
     }
     @Override
     public PieceEvilMinion spawn() {
-        return new PieceEvilMinion(this.getSymbol(), this.getTeamColor(),
-                1, 0, 0, false, false);
+        PieceEvilMinion evilMinion = new PieceEvilMinion();
+        evilMinion.symbol = toLowerCase(this.symbol);
+        evilMinion.teamColor = this.getTeamColor();
+        evilMinion.numRecruits = 1;
+        evilMinion.numAttacks = 0;
+        evilMinion.numTimesSpawned = 0;
+        evilMinion.hidden = false;
+        evilMinion.original = true;
+        evilMinion.hungry = true;
+        this.setNumTimesSpawned(this.numTimesSpawned+1);
+        return evilMinion;
     }
 }
