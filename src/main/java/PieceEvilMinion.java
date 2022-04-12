@@ -24,6 +24,9 @@ public class PieceEvilMinion extends PieceMinion{
     public void setNumAttacks(int numAttacks)  {
         this.numAttacks = numAttacks;
     }
+    public int getNumAttacks() {
+        return this.numAttacks;
+    }
     public void setNumTimesSpawned(int newNum) {
         super.numTimesSpawned = newNum;
     }

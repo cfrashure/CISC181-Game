@@ -1,46 +1,61 @@
 public class GameBoard {
-    private int row;
-    private int col;
+    private int numRows;
+    private int numColumns;
     private BoardSquare[][] squares;
 
-    public GameBoard(int numRows, int numColumns) {
-        this.row = numRows;
-        this.col = numColumns;
+    protected GameBoard(int numRows, int numColumns){
+        this.numRows = numRows;
+        this.numColumns = numColumns;
         squares = new BoardSquare[numRows][numColumns];
-        this.setUpEmptyBoard();
+        setUpEmptyBoard();
     }
-    public int getNumRows() {
-        return this.row;
+
+    public int getNumRows(){
+        return numRows;
     }
-    public int getNumColumns() {
-        return this.col;
+
+    public int getNumColumns(){
+        return numColumns;
     }
-    public BoardSquare[][] getSquares() {
-        return this.squares;
+
+    public BoardSquare[][] getSquares(){
+        return squares;
     }
-    public boolean inBounds(int row, int col) {
-        return(squares[row][col] != null);
+
+    public boolean inBounds(int rowIndex, int columnIndex){
+        if ((rowIndex >= 0) && (columnIndex >= 0)) {
+            if ((rowIndex < this.numRows) && (columnIndex < this.numColumns)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
     }
+
     private void setUpEmptyBoard() {
         int count = 1;
-        for (BoardSquare[] squareRow : squares) {
-            for (BoardSquare square : squareRow) {
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numColumns; j++) {
                 if (count%2==0) {
-                    square = new BoardSquare("Black");
+                    squares[i][j] = new BoardSquare("White");
                 }
                 else {
-                    square = new BoardSquare("White");
+                    squares[i][j] = new BoardSquare("Black");
                 }
                 count++;
             }
         }
     }
+
     public BoardSquare findRandomEmptySpace() {
         boolean found = false;
         BoardSquare randomSquare = null;
         while (!found) {
-            randomSquare = squares[(int) (Math.random() * row)]
-                    [(int) (Math.random() * col)];
+            randomSquare = squares[(int) (Math.random() * numRows)]
+                    [(int) (Math.random() * numColumns)];
             if(randomSquare.isEmpty()) {
                 found = true;
             }
@@ -48,8 +63,7 @@ public class GameBoard {
         return randomSquare;
     }
 
-    @Override
-    public String toString() {
+    public String toString(){
         StringBuilder boardString = new StringBuilder();
         boardString.append("Col :       ");
 
@@ -66,4 +80,6 @@ public class GameBoard {
         }
         return boardString.toString();
     }
+
+
 }
