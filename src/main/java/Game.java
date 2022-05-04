@@ -1,7 +1,7 @@
 import java.util.Collections;
 import java.util.Objects;
 
-public class Game {
+public abstract class Game {
     private GameBoard board;
     private Team team1;
     private Team team2;
@@ -70,4 +70,7 @@ public class Game {
                 .append("\nIt is Team " + getCurrentTeam().getTeamColor() + "'s turn\n");
         return retString.toString();
     }
+    public abstract boolean isAWinner();
+    public abstract Team getWinner();
+    public abstract boolean isGameEnded();
 }

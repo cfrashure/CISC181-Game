@@ -1,6 +1,6 @@
 import static java.lang.Character.toLowerCase;
 
-public class PieceEvilMinion extends PieceMinion{
+public class PieceEvilMinion extends PieceMinion implements Attacker, Recruiter {
     private int numAttacks;
     private boolean hungry;
     public static int MAX_NUM_SPAWNED = 3;
@@ -24,6 +24,12 @@ public class PieceEvilMinion extends PieceMinion{
     public void setNumAttacks(int numAttacks)  {
         this.numAttacks = numAttacks;
     }
+
+    @Override
+    public boolean validAttackPath(int rowDo, int columnDo, int rowBe, int columnBe) {
+        return true;
+    }
+
     public int getNumAttacks() {
         return this.numAttacks;
     }
@@ -55,5 +61,10 @@ public class PieceEvilMinion extends PieceMinion{
         evilMinion.hungry = true;
         this.setNumTimesSpawned(this.numTimesSpawned+1);
         return evilMinion;
+    }
+
+    @Override
+    public boolean validRecruitPath(int rowDo, int columnDo, int rowBe, int columnBe) {
+        return true;
     }
 }
