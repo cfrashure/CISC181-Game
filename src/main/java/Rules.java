@@ -31,9 +31,6 @@ public class Rules {
 
     private static boolean validAttack(Game game, int row1, int column1,
                                 int row2, int column2) {
-        // validattackpath if statement
-        // can be added when we figure out whats wrong :(
-
         // cases for each piece
         boolean valid = false;
         //case : buzz
@@ -241,8 +238,6 @@ public class Rules {
         System.out.println(Rules.checkValidAction(game,
                 2, 0,
                 0, 0, 'R'));
-
-
 
 
 
