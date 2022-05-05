@@ -112,4 +112,7 @@ public class TextView {
         System.out.println("The Winner is " + game.getWinner().getTeamColor() + " Team!");
 
     }
+    public char getactionType(){
+        return actionType;
+    }
 }

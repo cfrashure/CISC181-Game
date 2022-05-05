@@ -45,7 +45,7 @@ public class GameTest {
         // Create a team object
         Team teamB = new Team("Red",piecesTeamB);
 
-        Game ourGame = new Game(8, 8,teamA, teamB);
+        Game ourGame = new GameS22(8, 8,teamA, teamB);
         System.out.println(ourGame.toString());
 
         assertEquals(teamA,ourGame.getCurrentTeam());
