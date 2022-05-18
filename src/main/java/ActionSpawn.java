@@ -10,6 +10,5 @@ public class ActionSpawn extends Action{
         Piece spawned = thePiece.spawn(); //not sure why get current team not working
         this.Game22.getCurrentTeam().addPieceToTeam(spawned);
         this.Game22.getGameBoard().getSquares()[toRow][toCol].setPiece(spawned);
-        this.Game22.changeTurn();
     }
 }

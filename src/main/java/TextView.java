@@ -67,7 +67,7 @@ public class TextView {
 
         while(!validNum){
             System.out.println("Enter an integer between " + min + " and " + max);
-            if (userInput > min && userInput < max){
+            if (userInput >= min && userInput < max){
                 validNum = true;
             }
             else{

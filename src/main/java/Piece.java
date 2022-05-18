@@ -1,4 +1,4 @@
-public abstract class Piece {
+public abstract class Piece implements Comparable<Piece> {
     protected char symbol;
     protected String teamColor;
     protected boolean hidden;
@@ -13,6 +13,8 @@ public abstract class Piece {
     public abstract Piece spawn();
     public abstract boolean canSpawn();
     public abstract boolean validMovePath(int fromSquareRow,
+                                          int fromSquareCol, int toSquareRow, int toSquareCol);
+    public abstract boolean validSpawnPath(int fromSquareRow,
                                           int fromSquareCol, int toSquareRow, int toSquareCol);
     public char getSymbol() {
         return this.symbol;
@@ -41,5 +43,9 @@ public abstract class Piece {
     @Override
     public String toString() {
         return(this.getTeamColor() + " " + this.getSymbol());
+    }
+    @Override
+    public int compareTo(Piece thePiece) {
+        return Character.toString(symbol).compareTo(Character.toString(thePiece.symbol));
     }
 }

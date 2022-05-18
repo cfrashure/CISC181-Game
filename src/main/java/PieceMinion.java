@@ -48,6 +48,11 @@ public class PieceMinion extends Piece implements Recruiter {
     }
 
     @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
+        return true;
+    }
+
+    @Override
     public PieceMinion spawn(){
         return new PieceMinion(Character.toLowerCase(this.symbol),
                 this.teamColor,1,

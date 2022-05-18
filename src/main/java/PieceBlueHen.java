@@ -69,11 +69,16 @@ public class PieceBlueHen extends Piece implements Attacker, Recruiter {
     public void speak(){
         System.out.println("Go UD!");
     }
-
+    @Override
     public boolean validMovePath(int fromSquareRow, int fromSquareCol,
                                  int toSquareRow, int toSquareCol) {
         // You will implement this method in a later step
         // each Piece will have a different valid path
+        return true;
+    }
+
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
         return true;
     }
 

@@ -12,7 +12,7 @@ public class Controller {
         ArrayList<Piece> piecesTeamA = new ArrayList<>();
         piecesTeamA.add(new PieceMinion('M',"Blu",
                 0,0,false,true));
-        piecesTeamA.add(new PieceBuzz('B',"Blu",2,1,
+        piecesTeamA.add(new PieceSpanishBuzz('S',"Blu",2,1,
                 true,false,true));
         piecesTeamA.add(new PieceBlueHen('H',"Blu",3,
                 9,false,true));
@@ -53,7 +53,9 @@ public class Controller {
         else if (actionType == 'S'){
             ActionSpawn actSpawn = new ActionSpawn(game, viewer.getfromRow(), viewer.getfromColumn(), viewer.gettoRow(), viewer.gettoColumn());
             actSpawn.performAction();
+
         }
+
         else if (actionType == 'M'){
             ActionMove actMove = new ActionMove(game, viewer.getfromRow(), viewer.getfromColumn(), viewer.gettoRow(), viewer.gettoColumn());
             actMove.performAction();

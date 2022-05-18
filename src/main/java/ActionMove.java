@@ -8,12 +8,6 @@ public class ActionMove extends Action{
         thePiece.speak();
         this.Game22.getGameBoard().getSquares()[fromRow][fromCol].removePiece();
         this.Game22.getGameBoard().getSquares()[toRow][toCol].setPiece(thePiece);
-
-        /**this.Game22.getGameBoard().getSquares()[fromRow][fromCol].getPiece().speak();
-         this.Game22.getGameBoard().getSquares()[fromRow][fromCol].removePiece();
-         this.Game22.getGameBoard().getSquares()[toRow][toCol].getPiece().setSquares()[][];
-         this.Game22.changeTurn();
-         *
-         */
+        this.Game22.changeTurn();
     }
 }

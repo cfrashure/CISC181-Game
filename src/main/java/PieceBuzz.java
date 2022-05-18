@@ -50,7 +50,13 @@ public class PieceBuzz extends Piece implements Attacker {
 
     @Override
     public boolean validAttackPath(int rowDo, int columnDo, int rowBe, int columnBe) {
-        return true;
+        //any number of spaces left and right across a row but no spaces up and down the column
+        if(rowDo != rowBe){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     public void updateNumTimesBeenAttacked(){
@@ -64,10 +70,15 @@ public class PieceBuzz extends Piece implements Attacker {
 
     public boolean validMovePath(int fromSquareRow, int fromSquareCol,
                                  int toSquareRow, int toSquareCol) {
-        // You will implement this method in a later step
-        // each Piece will have a different valid path
+        //can move anywhere on the board
         return true;
     }
+
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
+        return false;
+    }
+
     public Piece spawn(){
         return null;
     }

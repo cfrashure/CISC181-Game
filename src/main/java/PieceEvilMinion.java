@@ -64,6 +64,11 @@ public class PieceEvilMinion extends PieceMinion implements Attacker, Recruiter 
     }
 
     @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
+        return true;
+    }
+
+    @Override
     public boolean validRecruitPath(int rowDo, int columnDo, int rowBe, int columnBe) {
         return true;
     }
