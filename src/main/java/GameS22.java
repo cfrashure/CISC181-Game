@@ -5,8 +5,18 @@ public class GameS22 extends Game {
 
     @Override
     public boolean isAWinner() {
-        if (this.getCurrentTeam().getTeamPieces().size() == 0 &&
-                this.getOpponentTeam().getTeamPieces().size() >= 0) {
+        // New Objective Modification
+        int numBuzz = 0;
+        for (Piece piece : getCurrentTeam().getTeamPieces()){
+            if (piece instanceof PieceBuzz){
+                numBuzz++;
+            }
+        }
+        //returns true(there is a winner) if team has no Buzz or no pieces
+        if (this.getCurrentTeam().getTeamPieces().size() <= 0 && this.getCurrentTeam().getTeamPieces().size() > 0) {
+            return true;
+        }
+        else if (numBuzz <= 0){
             return true;
         }
         else {
@@ -17,7 +27,7 @@ public class GameS22 extends Game {
     @Override
     public Team getWinner() {
         if (this.isAWinner()) {
-            return getCurrentTeam();
+            return getOpponentTeam();
         }
         else {
             return null;
@@ -26,7 +36,7 @@ public class GameS22 extends Game {
 
     @Override
     public boolean isGameEnded() {
-        return (getCurrentTeam().getTeamPieces().size() == 0 ||
-                getOpponentTeam().getTeamPieces().size() == 0);
-        }
+        return ((getCurrentTeam().getTeamPieces().size() == 0) ||
+                (getOpponentTeam().getTeamPieces().size() == 0));
+    }
 }

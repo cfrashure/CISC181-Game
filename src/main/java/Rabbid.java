@@ -3,6 +3,9 @@
  * minions and can spawn other rabbids. At any time, there can be up to three rabbids on the game board. Rabbids can
  * also Huddle and recruit up to four pieces that are left, right, above, or below them!
  */
+
+// New Piece Modification
+
 public class Rabbid extends Piece implements Recruiter, Attacker, Huddler {
     protected  int numAttacks;
     protected int numTimesSpawned;

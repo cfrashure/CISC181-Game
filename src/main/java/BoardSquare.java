@@ -23,6 +23,8 @@ public class BoardSquare {
         this.onSquare = newPiece;
         this.empty = false;
     }
+
+    // Board Square Modification
     public void setIsUFO(boolean isUFO){ this.isUFO = isUFO; }
 
     public Piece removePiece() {
