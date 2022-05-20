@@ -31,7 +31,13 @@ public class PieceMinion extends Piece implements Recruiter {
 
     @Override
     public boolean validRecruitPath(int rowDo, int columnDo, int rowBe, int columnBe) {
-        return true;
+        // same path as move
+        if(columnDo != columnBe){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     @Override
@@ -42,9 +48,13 @@ public class PieceMinion extends Piece implements Recruiter {
     @Override
     public boolean validMovePath(int fromSquareRow, int fromSquareCol,
                                  int toSquareRow, int toSquareCol) {
-        // You will implement this method in a later step
-        // each Piece will have a different valid path
-        return true;
+        // any number of spaces up and down the column but no spaces across the row
+        if (fromSquareCol != toSquareCol){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     @Override

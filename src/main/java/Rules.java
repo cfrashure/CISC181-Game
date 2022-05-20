@@ -15,14 +15,37 @@ public class Rules {
     }
 
     private static boolean validSpawn(Game game, int row1, int column1,
-                                int row2, int column2) {
+                                      int row2, int column2) {
+
         boolean valid = false;
         if (game.getGameBoard().getSquares()[row1][column1].getPiece() instanceof PieceBuzz) {
             return false;
         }
+        else if (game.getGameBoard().getSquares()[row1][column1].getPiece() instanceof PieceMinion) {
+            BoardSquare cornerTopL = game.getGameBoard().getSquares()[0][0];
+            BoardSquare cornerTopR = game.getGameBoard().getSquares()[0][7];
+            BoardSquare cornerBtmL = game.getGameBoard().getSquares()[7][0];
+            BoardSquare cornerBtmR = game.getGameBoard().getSquares()[7][7];
+            BoardSquare theCorner;
+            if (row1 <= 3) {
+                if (column1 <= 3) {
+                    theCorner = cornerTopL;
+                } else {
+                    theCorner = cornerTopR;
+                }
+            }
+            else{
+                if (column1 <= 3) {
+                    theCorner = cornerBtmL;
+                } else {
+                    theCorner = cornerBtmR;
+                }
+            }
+            return theCorner.equals(game.getGameBoard().getSquares()[row2][column2]);
+        }
         else if (game.getBoardSquares()[row2][column2].isEmpty()) {
             if (game.getGameBoard().getSquares()[row1][column1]
-                    .getPiece().canSpawn()) {
+                    .getPiece().validSpawnPath(row1, column1, row2, column2)) {
                 valid = true;
             }
         }
@@ -30,7 +53,7 @@ public class Rules {
     }
 
     private static boolean validAttack(Game game, int row1, int column1,
-                                int row2, int column2) {
+                                       int row2, int column2) {
         // cases for each piece
         boolean valid = false;
         //case : buzz
@@ -81,20 +104,32 @@ public class Rules {
     }
 
     private static boolean validRecruit(Game game, int row1, int column1,
-                                int row2, int column2) {
+                                        int row2, int column2) {
         boolean valid = false;
         if (game.getGameBoard().getSquares()[row1][column1].getPiece() instanceof PieceBuzz) {
             return false;
         }
         else if (!game.getBoardSquares()[row2][column2].isEmpty()) {
             if (game.getOpponentTeam().getTeamColor() == game.getBoardSquares()[row2][column2].getPiece().getTeamColor()) {
-                // IDK WHY THIS ISN;T WORKING SO IT"S JUST GONNA BE TRUE.
-               /* if (game.getGameBoard().getSquares()[row1][column1].getPiece()
-                    .validRecruitPath(row1, column1, row2, column2)) {
-                    valid = true;
-                } */
-                valid = true; //remove this when fixed
+                if (game.getGameBoard().getSquares()[row1][column1].getPiece() instanceof PieceMinion) {
+                    valid = ((PieceMinion) game.getGameBoard().getSquares()[row1][column1]
+                            .getPiece()).validRecruitPath(row1, column1, row2, column2);
+                }
+                if (game.getGameBoard().getSquares()[row1][column1].getPiece() instanceof PieceBlueHen) {
+                    valid = ((PieceBlueHen) game.getGameBoard().getSquares()[row1][column1]
+                            .getPiece()).validRecruitPath(row1, column1, row2, column2);
+                }
             }
+        }
+        return valid;
+    }
+
+    private static boolean validHuddle(Game game, int row1, int column1,
+                                       int row2, int column2) {
+        boolean valid = false;
+        if (game.getGameBoard().getSquares()[row1][column1].getPiece() instanceof Rabbid) {
+            valid = ((Rabbid) game.getGameBoard().getSquares()[row1][column1]
+                    .getPiece()).validHuddlePath(row1, column1, row2, column2);
         }
         return valid;
     }
@@ -103,8 +138,8 @@ public class Rules {
                                            int row2, int column2, char action) {
         boolean valid = false;
         if (game.getGameBoard().inBounds(row1, column1) && game.getGameBoard().inBounds(row2, column2)
-                 && game.getCurrentTeam().getTeamColor() ==
-                        game.getGameBoard().getSquares()[row1][column1].getPiece().getTeamColor()) {
+                && game.getCurrentTeam().getTeamColor() ==
+                game.getGameBoard().getSquares()[row1][column1].getPiece().getTeamColor()) {
             if (action == 'M') {
                 valid = validMove(game, row1, column1, row2, column2);
             }
@@ -116,6 +151,10 @@ public class Rules {
             }
             if (action == 'A') {
                 valid = validAttack(game, row1, column1, row2, column2);
+            }
+            if (action == 'H') {
+                System.out.println("%");
+                valid = validHuddle(game, row1, column1, row2, column2);
             }
         }
         return valid;

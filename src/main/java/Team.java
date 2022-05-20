@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Team {
     private String teamColor;
@@ -23,8 +22,7 @@ public class Team {
     }
     @Override
     public String toString() {
-        Collections.sort(teamPieces);
-        StringBuilder total = new StringBuilder(("Team " + teamColor + " Pieces : \n"));
+        StringBuilder total = new StringBuilder(("Team " + teamColor + " Pieces:\n"));
         for(Piece piece : teamPieces) {
             total.append(piece.toString()).append(" ");
         }

@@ -37,9 +37,9 @@ public class PieceEvilMinion extends PieceMinion implements Attacker, Recruiter 
         super.numTimesSpawned = newNum;
     }
     public void updateHungry() {
-       if(this.numAttacks < MAX_NUM_ATTACKS) {
-           this.hungry = true;
-       }
+        if(this.numAttacks < MAX_NUM_ATTACKS) {
+            this.hungry = true;
+        }
     }
     @Override
     public void speak() {
@@ -61,11 +61,6 @@ public class PieceEvilMinion extends PieceMinion implements Attacker, Recruiter 
         evilMinion.hungry = true;
         this.setNumTimesSpawned(this.numTimesSpawned+1);
         return evilMinion;
-    }
-
-    @Override
-    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
-        return true;
     }
 
     @Override

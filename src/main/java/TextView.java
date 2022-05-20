@@ -23,6 +23,7 @@ public class TextView {
     }
 
     //methods named getUsersNextActionType and getValidInt from Lab 2
+    //methods named getUsersNextActionType and getValidInt from Lab 2
     public static char getUserNextActionType (Scanner scr){
         /**
          *This method will use a while loop to repeatedly ask the user to enter
@@ -34,12 +35,12 @@ public class TextView {
          *@return myChar returns the character input by the user, if valid
          */
         boolean validChar = false;
-        System.out.println("Would you like to Attack, Move, Recruit, or Spawn?");
+        System.out.println("Would you like to Attack, Move, Recruit, Huddle, or Spawn?");
         char myChar = scr.next().charAt(0);
         while (!validChar){
             myChar = Character.toUpperCase(myChar);
-            System.out.println("Would you like to Attack, Move, Recruit, or Spawn?");
-            if (myChar == 'A' || myChar == 'S' || myChar == 'M' || myChar == 'R'){
+            System.out.println("Would you like to Attack, Move, Recruit, Spawn, or Huddle?");
+            if (myChar == 'A' || myChar == 'S' || myChar == 'M' || myChar == 'R' || myChar == 'H'){
                 validChar = true;
             }
             else{
@@ -78,27 +79,27 @@ public class TextView {
     }
 
     public void getNextPlayersAction(GameS22 game){
-        System.out.println("what action would you like your piece to perform?");
+        System.out.println("What action would you like your piece to perform?");
         Scanner scr0 = new Scanner(System.in);
         actionType = getUserNextActionType(scr0);
 
         //FROM
-        System.out.println("what is the current row of your piece?");
+        System.out.println("What is the current row of your piece?");
         int maxRow = game.getGameBoard().getNumRows();
         Scanner scr1 = new Scanner(System.in);
         fromRow = getValidInt(0, maxRow, scr1);
 
-        System.out.println("what is the current column of your piece?");
+        System.out.println("What is the current column of your piece?");
         int maxColumn = game.getGameBoard().getNumColumns();
         Scanner scr2 = new Scanner(System.in);
         fromColumn = getValidInt(0, maxColumn, scr2);
 
         //TO
-        System.out.println("what row would you like to move your piece to?");
+        System.out.println("What row would you like to move your piece to?");
         Scanner scr3 = new Scanner(System.in);
         toRow = getValidInt(0, maxRow, scr3);
 
-        System.out.println("what column would you like to move your piece to?");
+        System.out.println("What column would you like to move your piece to?");
         Scanner scr4 = new Scanner(System.in);
         toColumn = getValidInt(0, maxColumn, scr4);
     }

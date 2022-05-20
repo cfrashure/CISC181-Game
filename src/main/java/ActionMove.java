@@ -5,9 +5,20 @@ public class ActionMove extends Action{
     @Override
     public void performAction(){
         Piece thePiece = this.Game22.getGameBoard().getSquares()[fromRow][fromCol].getPiece();
-        thePiece.speak();
-        this.Game22.getGameBoard().getSquares()[fromRow][fromCol].removePiece();
-        this.Game22.getGameBoard().getSquares()[toRow][toCol].setPiece(thePiece);
+        boolean isSpecial = Game22.getGameBoard().getSquares()[toRow][toCol].getIsUFO();
+
+        if (isSpecial){
+            System.out.println("You landed on the UFO square!");
+            this.Game22.getGameBoard().getSquares()[toRow][toCol].setIsUFO(false);
+            this.Game22.getGameBoard().getSquares()[fromRow][fromCol].removePiece();
+            this.Game22.getGameBoard().findRandomEmptySpace().setPiece(thePiece);
+        }
+        else {
+            thePiece.speak();
+            this.Game22.getGameBoard().getSquares()[fromRow][fromCol].removePiece();
+            this.Game22.getGameBoard().getSquares()[toRow][toCol].setPiece(thePiece);
+        }
         this.Game22.changeTurn();
     }
+
 }

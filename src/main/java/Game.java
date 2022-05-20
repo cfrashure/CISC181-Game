@@ -16,6 +16,8 @@ public abstract class Game {
             BoardSquare space = board.findRandomEmptySpace();
             space.setPiece(piece);
         }
+        board.findRandomEmptySpace().setIsUFO(true);
+        board.getSquares()[3][3].setIsUFO(true);
     }
     public Game (int row, int col, Team team1, Team team2) {
         this.team1 = team1;
@@ -26,6 +28,7 @@ public abstract class Game {
     public GameBoard getGameBoard() {
         return this.board;
     }
+
     public Team getCurrentTeam() {
         if (Objects.equals(turn, team1.getTeamColor())) {
             return this.team1;
